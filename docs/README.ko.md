@@ -14,18 +14,18 @@ NOVEMBERIZING STORAGE
 
 ----
 
-> "Novemberizing iam" is an application that implements the Identity Access Management System.
+> "Novemberizing iam" 은 Identity Access Management System 을 구현한 어플리케이션입니다.
 
-The goal of "Novemberizing iam" is to help you easily build user management and account management with just installation when building applications.
+"Novemberizing iam"의 목표는 어플리케이션을 구축할 때, 사용자 관리와 계정 관리를 설치만으로 쉽게 구축할 수 있도록 돕는 것입니다.
 
 ![Class Diagram Log](https://novemberizing.github.io/iam/assets/images/ClassDiagramIdentityAccessManager.jpg)
 
-## INSTALL
+## 설치
 
 ...
 
-## USAGE
+## 사용법
 
-### DOCUMENT
+### 문서
 
 [Novemberizing iam api](https://novemberizing.github.io/iam/api)
