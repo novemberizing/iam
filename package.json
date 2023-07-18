@@ -1,6 +1,6 @@
 {
   "name": "@novemberizing/iam",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -10,13 +10,13 @@
   "author": "novemberizing <novemberizing@gmail.com>",
   "license": "MPL-2.0",
   "dependencies": {
-    "@novemberizing/app": "^0.0.13",
-    "@novemberizing/log": "^0.0.9",
-    "@novemberizing/storage": "^0.0.31",
+    "@novemberizing/app": "*",
+    "@novemberizing/log": "*",
+    "@novemberizing/storage": "*",
     "jsonwebtoken": "^9.0.1"
   },
   "devDependencies": {
-    "@novemberizing/config": "^0.0.12",
+    "@novemberizing/config": "*",
     "jsdoc": "^4.0.2",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0"
