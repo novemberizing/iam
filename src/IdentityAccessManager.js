@@ -40,7 +40,6 @@ export default class IdentityAccessManager extends ApplicationServerService {
                 try {
                     res.send(await this.signup(req.body.account, req.body.user));
                 } catch(e) {
-                    console.log(e);
                     res.status(500).send({});
                 }
             });
