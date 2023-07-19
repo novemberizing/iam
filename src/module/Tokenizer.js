@@ -2,9 +2,26 @@ import JsonWebToken from "jsonwebtoken";
 
 import { ApplicationServerServiceModule } from "@novemberizing/app";
 
+const access = {
+    secret: "identity.access.manager.tokenizer.access",
+    options: {
+        expiresIn: "10m"
+    }
+};
+
+const refresh = {
+    secret: "identity.access.manager.tokenizer.refresh",
+    options: {
+        expiresIn: "10d"
+    }
+};
+
 export default class IdentityAccessTokenizer extends ApplicationServerServiceModule {
     constructor(service, config) {
         super("/token", service, config);
+
+        config.access = config.access || access;
+        config.refresh = config.refresh || refresh;
     }
 
     async sign(payload, secret, options) {

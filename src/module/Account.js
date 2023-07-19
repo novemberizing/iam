@@ -23,7 +23,13 @@ export default class IdentityAccessAccount extends ApplicationServerServiceModul
     constructor(service, config) {
         super("/account", service, config);
 
-        if(config.storage) this.#storage = new Storage(Object.assign({extension}, config.storage));
+        if(config.storage) {
+            this.#storage = new Storage(Object.assign({extension}, config.storage));
+        } else if(service.config.storage) {
+            this.#storage = new Storage(Object.assign({extension}, service.config.storage));
+        } else if(service.server.config.storage) {
+            this.#storage = new Storage(Object.assign({extension}, service.server.config.storage));
+        }
     }
 
     async off() {

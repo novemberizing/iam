@@ -8,7 +8,6 @@ import IdentityAccessAuthorizer from "./module/Authorizer.js";
 import IdentityAccessTokenizer from "./module/Tokenizer.js";
 import IdentityAccessUser from "./module/User.js";
 
-import IdentityAccessExceptionInvalid from "./exception/Invalid.js";
 import IdentityAccessExceptionUnsupported from "./exception/Unsupported.js";
 
 export default class IdentityAccessManager extends ApplicationServerService {
@@ -25,6 +24,12 @@ export default class IdentityAccessManager extends ApplicationServerService {
 
         if(server.express) {
         }
+
+        if(!this.modules.get("/user")) this.reg(new IdentityAccessUser(this, {}));
+        if(!this.modules.get("/account")) this.reg(new IdentityAccessAccount(this, {}));
+        if(!this.modules.get("/authenticator")) this.reg(new IdentityAccessAuthenticator(this, {}));
+        if(!this.modules.get("/authorizer")) this.reg(new IdentityAccessAuthorizer(this, {}));
+        if(!this.modules.get("/token")) this.reg(new IdentityAccessTokenizer(this, {}));
     }
 
     // account, token
