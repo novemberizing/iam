@@ -63,6 +63,15 @@ export default class IdentityAccessManager extends ApplicationServerService {
         throw new IdentityAccessExceptionUnsupported();
     }
 
+    /**
+     * 모듈의 호출 순서는 중요하다.
+     * 
+     * 사용자 생성에 실패하면 계정을 생성하지 말아야 한다.
+     * 
+     * @param {Object} account      계정 정보
+     * @param {Object} user         사용자 정보
+     * @return  Object              사용자 정보와 계정 정보를 리턴한다.
+     */
     async signup(account, user) {
         user = await this.moduleCall("/user", "gen", user);
         account = await this.moduleCall("/account", "gen", Object.assign({ no: user.no }, account));
