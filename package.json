@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@novemberizing/config": "*",
+    "axios": "^1.4.0",
     "jsdoc": "^4.0.2",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0"

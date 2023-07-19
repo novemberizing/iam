@@ -16,6 +16,12 @@
     "server": {
         "engine": "ApplicationServerExpress",
         "port": 40001,
+        "storage": {
+            "url": "mysql://root@localhost/novemberizing",
+            "adapter": {
+                "password": "melong@17"
+            }
+        },
         "services": {
             "ApplicationServerServiceRoot": {},
             "IdentityAccessManager": {}

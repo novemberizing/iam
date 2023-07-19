@@ -6,6 +6,7 @@ import Application from "@novemberizing/app";
 import Config from "@novemberizing/config";
 import Log from "@novemberizing/log";
 import _ from "lodash";
+import axios from "axios";
 
 Log.config = {
     error: false,
@@ -165,10 +166,52 @@ describe("IdentityAccessManager", () => {
 
         await Application.administrator.call("/iam", "signin", o);
 
-        await Application.administrator.moduleCall("/iam", "/user", "del", { email: "novemberizing@outlook.kr" });
+        try {
+            await Application.administrator.moduleCall("/iam", "/user", "del", { email: "novemberizing@outlook.kr" });
+        } catch(e) {
+
+        }
+        
         await Application.administrator.moduleCall("/iam", "/account", "del", { identity: "novemberizing", password: "melong@17" });
 
         await Application.administrator.call("/iam", "signup", { identity: "novemberizing", password: "melong@17" }, { email: "novemberizing@outlook.kr" });
+
+        await Application.off();
+    });
+
+    it(" 0006 IdentityAccessManager", async () => {
+        Application.use(IdentityAccessManager);
+
+        await Application.on(await Config.gen({ url: "fs://./test/IdentityAccessManager.configure.json" }));
+
+        await assert.rejects(axios.get(`http://localhost:40001/iam/signin?identity=hello&password=world`));
+
+        try {
+            Application.server.moduleCall("/iam", "/account", "del", { identity: "iticworld", password: "melong@17" });
+        } catch(e) {
+
+        }
+
+        try {
+            Application.server.moduleCall("/iam", "/user", "del", { email: "iticworld@daum.com" });
+        } catch(e) {
+
+        }
+
+        await axios.post('http://localhost:40001/iam/signup', {
+            account: {
+                identity: "iticworld",
+                password: "melong@17"
+            },
+            user: {
+                email: "iticworld@daum.com",
+                name: "Hyunsik Park",
+                gender: "m",
+                birthday: "1977/11/03"
+            }
+        });
+
+        await axios.get(`http://localhost:40001/iam/signin?identity=iticworld&password=melong@17`);
 
         await Application.off();
     });

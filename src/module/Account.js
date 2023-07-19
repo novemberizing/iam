@@ -2,6 +2,8 @@ import { ApplicationServerServiceModule } from "@novemberizing/app";
 
 import Storage from "@novemberizing/storage";
 
+import IdentityAccessExceptionUninitialized from "../exception/Uninitialized.js";
+
 const extension = {
     gen: {
         sql: "CALL PROCEDURE_ACCOUNT_GEN(?)"
@@ -29,6 +31,8 @@ export default class IdentityAccessAccount extends ApplicationServerServiceModul
             this.#storage = new Storage(Object.assign({extension}, service.config.storage));
         } else if(service.server.config.storage) {
             this.#storage = new Storage(Object.assign({extension}, service.server.config.storage));
+        } else {
+            throw new IdentityAccessExceptionUninitialized();
         }
     }
 
