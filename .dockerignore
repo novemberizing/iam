@@ -1,0 +1,16 @@
+/.git
+/.github
+/docs
+/node_modules
+/.dockerignore
+/.gitignore
+/.npmignore
+/Dockerfile
+/HISTORY.md
+/iam.mwb
+/jsdoc.json
+/LICENSE
+/novemberizing.mwb
+/package-lock.json
+/README.md
+/configure.json

@@ -3,3 +3,6 @@
 /docs
 /.github
 /jsdoc.json
+/.dockerignore
+/iam.mwb
+/configure.json

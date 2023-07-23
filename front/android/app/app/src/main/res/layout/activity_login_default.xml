@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_login_default_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp">
+
+    <LinearLayout
+        android:id="@+id/activity_login_default_welcome_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="WELCOME"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_default_icon_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.2"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_welcome_layout">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/november_fall_holiday_autumn_tradition_icon" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_login_default_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_icon_layout"
+        android:hint="User ID">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_login_default_identity_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/activity_login_default_password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_email_layout"
+        app:endIconMode="password_toggle"
+        android:hint="Password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activity_login_default_password_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_default_login_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_password_layout">
+
+        <Button
+            android:id="@+id/activity_login_default_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:textSize="16sp"
+            android:text="LOGIN" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_default_social_login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.3"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_login_button_layout">
+
+        <ImageView
+            android:id="@+id/activity_login_default_social_google_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/google_brand_branding_logo_network_icon"/>
+        <!-- IMAGE BUTTON -->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_login_default_signup_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@id/activity_login_default_social_login_layout">
+
+        <TextView
+            android:id="@+id/activity_login_default_signup_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don’t have an account? Sign up"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|bottom"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

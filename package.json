@@ -1,10 +1,11 @@
 {
   "name": "@novemberizing/iam",
-  "version": "0.0.9",
+  "version": "0.0.13",
   "description": "",
   "main": "./src/index.js",
   "type": "module",
   "scripts": {
+    "start": "node src/server.js",
     "test": "mocha --recursive"
   },
   "author": "novemberizing <novemberizing@gmail.com>",
@@ -13,6 +14,7 @@
     "@novemberizing/app": "*",
     "@novemberizing/log": "*",
     "@novemberizing/storage": "*",
+    "google-auth-library": "^9.0.0",
     "jsonwebtoken": "^9.0.1"
   },
   "devDependencies": {
