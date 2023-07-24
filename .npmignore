@@ -1,8 +1,12 @@
-/novemberizing.mwb.bak
-/novemberizing.mwb
-/docs
 /.github
-/jsdoc.json
+/docs
+/front
 /.dockerignore
-/iam.mwb
+/.gitignore
 /configure.json
+/default.conf
+/Dockerfile
+/HISTORY.md
+/iam.mwb
+/jsdoc.json
+/novemberizing.mwb
