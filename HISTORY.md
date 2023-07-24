@@ -7,7 +7,7 @@
     * Docker Hub 를 어떻게 사용할지 고민하자.
     * 데이터베이스 설치를 위해서 고민하자.
     * 구글 로그인 [OK]
-    * 기본 로그인 폼 만들기 (SIGNIN/SIGNUP)
+    * 기본 로그인 폼 만들기 (SIGNIN/SIGNUP) [ok]
     * IAM 서비스 구축하기
     * NOVEMBERIZING.COM 이 존재 [OK]
     * HTTPS 를 제공하는 방법 무료 [OK]
@@ -82,5 +82,6 @@ function onEnterLogin() {
 <body onkeydown="onEnterLogin();">
 ...
 ```
+    * Android signup activity [ok]
 
     
