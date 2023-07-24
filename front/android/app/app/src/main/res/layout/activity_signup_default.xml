@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_signup_default_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <!-- SIGNUP TITLE TEXT  -->
+            <LinearLayout
+                android:id="@+id/activity_signup_default_welcome_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIGNUP"
+                    android:textStyle="bold"
+                    android:textSize="32sp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <!-- SIGNUP TITLE ICON -->
+            <LinearLayout
+                android:id="@+id/activity_signup_default_icon_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="64dp">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/november_fall_holiday_autumn_tradition_icon" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_signup_default_required_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/activity_signup_default_required_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="Required">
+
+                </com.google.android.material.textview.MaterialTextView>
+
+            </LinearLayout>
+
+            <!-- USER ID -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_signup_default_userid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="User ID"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_signup_default_userid_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:textSize="16sp"
+                    android:hint="User ID" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- EMAIL -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_signup_default_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_signup_default_email_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:textSize="16sp"
+                    android:hint="Email" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- PASSWORD -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_signup_default_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:hint="Password"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_signup_default_password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:hint="Password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- PASSWORD CONFIRM -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_signup_default_confirm_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:hint="Password Confirm"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/activity_signup_default_confirm_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:hint="Password Confirm" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_signup_default_optional_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:baselineAligned="true">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/activity_signup_default_optional_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="Optional">
+
+                </com.google.android.material.textview.MaterialTextView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_signup_default_optional_root_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- NAME -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_signup_default_name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activity_signup_default_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:textSize="16sp"
+                        android:hint="Name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- BIRTHDAY -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_signup_default_birthday_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Birthday"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activity_signup_default_birthday_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:textSize="16sp"
+                        android:hint="Birthday" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- GENDER -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_signup_default_gender_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Gender"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activity_signup_default_gender_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:textSize="16sp"
+                        android:hint="Gender" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- PROFILE -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/activity_signup_default_profile_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Profile"
+                    android:layout_marginBottom="64dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activity_signup_default_profile_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:textSize="16sp"
+                        android:hint="Profile" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <!-- SIGNUP BUTTON -->
+            <LinearLayout
+                android:id="@+id/activity_signup_default_signup_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/activity_signup_default_signup_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:textSize="16sp"
+                    android:text="SIGNUP" />
+
+            </LinearLayout>
+
+            <!-- SOCIAL LOGIN BUTTON -->
+            <LinearLayout
+                android:id="@+id/activity_signup_default_social_login_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/activity_signup_default_social_google_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/google_brand_branding_logo_network_icon"/>
+                <!-- IMAGE BUTTON -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

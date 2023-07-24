@@ -51,7 +51,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/activity_login_default_identity_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="64dp"
+            android:textSize="16sp"
+            android:hint="User ID" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,8 +69,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/activity_login_default_password_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:layout_height="64dp"
+            android:textSize="16sp"
+            android:inputType="textPassword"
+            android:hint="Password" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

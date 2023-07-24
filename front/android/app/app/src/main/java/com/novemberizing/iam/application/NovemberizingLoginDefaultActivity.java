@@ -35,13 +35,6 @@ public class NovemberizingLoginDefaultActivity extends AppCompatActivity {
 
         google = new NovemberizingIamGoogleLogin(this, findViewById(R.id.activity_login_default_social_google_image), getString(R.string.default_web_client_id), o -> {
             Log.e(Tag, o.toString());
-//            Log.e(Tag, "id => " + credential.getId());
-//            Log.e(Tag, "display name => " + credential.getDisplayName());
-//            Log.e(Tag, "family name => " + credential.getFamilyName());
-//            Log.e(Tag, "given name => " + credential.getGivenName());
-//            Log.e(Tag, "token => " + credential.getGoogleIdToken());
-//            Log.e(Tag, "password => " + credential.getPassword());
-//            Log.e(Tag, "profile => " + NovemberizingStr.get(credential.getProfilePictureUri()));
 
             NovemberizingSnackbar.show(findViewById(R.id.activity_login_default_layout), "Succeed to google login");
         });
@@ -50,7 +43,7 @@ public class NovemberizingLoginDefaultActivity extends AppCompatActivity {
             NovemberizingSnackbar.show(findViewById(R.id.activity_login_default_layout), "Succeed to identity and password");
         }));
 
-        NovemberizingActivity.linkify(signup, "Sign up", view -> Log.e(Tag, "signup"));
+        NovemberizingActivity.linkify(signup, "Sign up", view -> NovemberizingActivity.move(this, NovemberizingSignupDefaultActivity.class, false));
     }
 
     @Override

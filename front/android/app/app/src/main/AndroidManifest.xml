@@ -20,7 +20,7 @@
         <activity
             android:name=".NovemberizingMainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Bubus.NoActionBar">
+            android:theme="@style/Theme.NovemberizingIam.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,12 @@
         <activity
             android:name=".NovemberizingLoginDefaultActivity"
             android:exported="true"
-            android:theme="@style/Theme.Bubus.NoActionBar">
+            android:theme="@style/Theme.NovemberizingIam.NoActionBar">
+        </activity>
+        <activity
+            android:name=".NovemberizingSignupDefaultActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NovemberizingIam.NoActionBar">
         </activity>
 
     </application>
