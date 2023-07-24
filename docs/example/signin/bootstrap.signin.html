@@ -24,9 +24,20 @@
                 const result = await axios.get(`http://localhost:40001/iam/signin`, { headers: { Authorization: `Google ${o.credential}` } });
                 console.log(result.data);
             }
+            function onEnterLogin() {
+                var keyCode = window.event.keyCode;
+                if(keyCode === 13) {
+                    signin();
+                }
+            }
         </script>
+        <style>
+            ::placeholder {
+                color: #d0d0d0;
+            }
+        </style>
     </head>
-    <body>
+    <body onkeydown="onEnterLogin();">
         <div style="width: 100%;
                     margin: 0 auto;">
             <div style="width: 100%;
@@ -76,17 +87,17 @@
                                                                             border-bottom: 2px solid #adadad;
                                                                             margin-bottom: 37px;
                                                                             position: relative;">
-                            <input type="text" name="email" id="identity" style="font-family: Poppins;
-                                                                                 font-size: 15px;
-                                                                                 color: #555;
-                                                                                 line-height: 1.2;
-                                                                                 display: block;
-                                                                                 width: 100%;
-                                                                                 height: 45px;
-                                                                                 background: 0 0;
-                                                                                 padding: 0 5px;
-                                                                                 outline: none;
-                                                                                 border: none;">
+                            <input type="text" placeholder="User ID" name="email" id="identity" style="font-family: Poppins;
+                                                                                                       font-size: 15px;
+                                                                                                       color: #555;
+                                                                                                       line-height: 1.2;
+                                                                                                       display: block;
+                                                                                                       width: 100%;
+                                                                                                       height: 45px;
+                                                                                                       background: 0 0;
+                                                                                                       padding: 0 5px;
+                                                                                                       outline: none;
+                                                                                                       border: none;">
                             <span data-placeholder="Email" style="position: absolute;
                                                                   display: block;
                                                                   width: 100%;
@@ -120,17 +131,17 @@
                                          transition: all .4s;">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
-                            <input type="password" name="pass" id="password" style="font-family: Poppins;
-                                                                                    font-size: 15px;
-                                                                                    color: #555;
-                                                                                    line-height: 1.2;
-                                                                                    display: block;
-                                                                                    width: 100%;
-                                                                                    height: 47px;
-                                                                                    background: 0 0;
-                                                                                    padding: 0 5px;
-                                                                                    outline: none;
-                                                                                    border: none;">
+                            <input type="password" name="pass" placeholder="Password" id="password" style="font-family: Poppins;
+                                                                                                           font-size: 15px;
+                                                                                                           color: #555;
+                                                                                                           line-height: 1.2;
+                                                                                                           display: block;
+                                                                                                           width: 100%;
+                                                                                                           height: 47px;
+                                                                                                           background: 0 0;
+                                                                                                           padding: 0 5px;
+                                                                                                           outline: none;
+                                                                                                           border: none;">
                             <span data-placeholder="Password" style="position: absolute;
                                                                      display: block;
                                                                      width: 100%;
@@ -221,11 +232,11 @@
                                 Don’t have an account?
                             </span>
     
-                            <a href="signup.html" style="font-family: Poppins;
-                                                         font-size: 13px;
-                                                         color: #333;
-                                                         line-height: 1.5;">
-                                Sign Up
+                            <a href="/example/signup/bootstrap.signup.html" style="font-family: Poppins;
+                                                                                   font-size: 13px;
+                                                                                   color: #333;
+                                                                                   line-height: 1.5;">
+                                Sign up
                             </a>
                         </div>
                     </form>

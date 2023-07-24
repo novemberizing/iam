@@ -41,6 +41,7 @@ export default class IdentityAccessManager extends ApplicationServerService {
                     };
 
                     const authorization = _.split(req.header("Authorization"), " ");
+                    console.log(authorization);
                     if(authorization[0] === 'Google') {
                         o.google = authorization[1];
                     } else if(authorization[0] === 'Bearer') {

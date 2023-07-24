@@ -47,5 +47,40 @@ https://kotlinworld.com/424
 
     * Cross-Origin-Opener-Policy policy would block the window.postMessage call. 로그 더 이상 보지 않기
     * Docker biuld [OK]
-        docker build --tag novemberizing/iam:0.0.15 --tag novemberizing/iam:latest .
     * README 꾸미기
+    * Bootstrap signup page [ok]
+
+docs/example/signup/bootstrap.signup.html
+
+    * docs/example/signin/bootstrap.signin.html 에서 placeholder 적용 [ok]
+    * ANDROID SIGNUP PAGE
+    * 개발 서버를 설정하는 방법
+    * 개발 서버에서 안드로이드를 테스트하는 방법
+    * Bug / 개발환경에서 도커를 빌드하지 않으면 소스가 반영되지 않는다. [ok]
+
+개발환경에서 도커를 빌드하지 않으면 소스가 반영되지 않는다. 그렇기 때문에 개발환경에서 도커를 실행시킬 때는 /usr/src/app 을 마운트 시켜서 실행시키자.
+
+```
+docker run -itd --name iam -p 40001:40001 -p 50001:50001 -v ${PWD}:/usr/src/app novemberizing/iam
+```
+
+    * Enhancement / "docs/example/signin/bootstrap.signin.html" 페이지에서 엔터키를 치면 로그인되도록 하자. [ok]
+
+```js
+...
+function onEnterLogin() {
+    var keyCode = window.event.keyCode;
+    if(keyCode === 13) {
+        signin();
+    }
+}
+...
+```
+
+```html
+...
+<body onkeydown="onEnterLogin();">
+...
+```
+
+    

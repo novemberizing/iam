@@ -3,13 +3,13 @@ import IdentityAccessManager from "./IdentityAccessManager.js";
 import Config from "@novemberizing/config";
 import Log from "@novemberizing/log";
 
-Log.config = {
-    error: false,
-    warning: false,
-    information: false,
-    debug: false,
-    verbose: false
-};
+// Log.config = {
+//     error: false,
+//     warning: false,
+//     information: false,
+//     debug: false,
+//     verbose: false
+// };
 
 Application.use(IdentityAccessManager);
 

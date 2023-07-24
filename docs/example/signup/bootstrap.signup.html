@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NOVEMBERIZING IAM</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="https://accounts.google.com/gsi/client" async></script>
+        <script type="text/javascript">
+            async function signup(e) {
+                const identity = document.getElementById("userid") && document.getElementById("userid").value;
+                const password = document.getElementById("password") && document.getElementById("password").value;
+                const confirm = document.getElementById("confirm") && document.getElementById("confirm").value;
+                const email = document.getElementById("email") && document.getElementById("email").value;
+                const name = document.getElementById("name") && document.getElementById("name").value;
+                const birthday = document.getElementById("birthday") && document.getElementById("birthday").value;
+                const gender = document.getElementById("gender") && document.getElementById("gender").value;
+                const profile = document.getElementById("proflie") && document.getElementById("proflie").value;
+                // TODO: name, birtday, gender, profile validation
+                if(identity && password && password === confirm && email) {
+                    // const result = await axios.get(`https://novemberizing.com/iam/signin?identity=${identity}&password=${password}`);
+                    const result = await axios.post(`http://localhost:40001/iam/signup`, {
+                        account: { identity, password },
+                        user: { email, name, birthday, gender, profile }
+                    });
+                    console.log(result.data);
+                } else {
+                    // TODO: ALERT
+                }
+            }
+            async function onGoogleLogin(o) {
+                // const result = await axios.get(`http://novemberizing.com/iam/signin`, { headers: { Authorization: `Google ${o.credential}` } });
+                const result = await axios.get(`http://localhost:40001/iam/signin`, { headers: { Authorization: `Google ${o.credential}` } });
+                console.log(result.data);
+            }
+            function onEnterLogin() {
+                var keyCode = window.event.keyCode;
+                if(keyCode === 13) {
+                    signup();
+                }
+            }
+        </script>
+        <style>
+            ::placeholder {
+                color: #d0d0d0;
+            }
+        </style>
+    </head>
+    <body onkeydown="onEnterLogin();">
+        <div style="width: 100%;
+                    margin: 0 auto;">
+            <div style="width: 100%;
+                        min-height: 100vh;
+                        display: -webkit-box;
+                        display: -webkit-flex;
+                        display: -moz-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 15px;
+                        background: #f2f2f2;">
+                <div style="width: 390px;
+                            background: #fff;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            padding: 77px 55px 33px;
+                            box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+                            -moz-box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+                            -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+                            -o-box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+                            -ms-box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);">
+                    <form class="validate-form" style="width: 100%;">
+                        <span style="display: block;
+                                     font-family: 'Poppins', sans-serif;
+                                     font-size: 30px;
+                                     color: #333;
+                                     line-height: 1.2;
+                                     text-align: center;
+                                     padding-bottom: 26px;">
+                            SIGNUP
+                        </span>
+                        <span style="display: block;
+                                    font-family: Poppins-Bold;
+                                    font-size: 30px;
+                                    color: #333;
+                                    line-height: 1.2;
+                                    text-align: center;
+                                    padding-bottom: 48px;">
+                            <img width="64" src="https://novemberizing.github.io/iam/assets/images/november_fall_holiday_autumn_tradition_icon.png">
+                        </span>
+                        <!-- USER ID -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="userid" placeholder="User ID" id="userid" style="font-family: Poppins;
+                                                                                                      font-size: 15px;
+                                                                                                      color: #555;
+                                                                                                      line-height: 1.2;
+                                                                                                      display: block;
+                                                                                                      width: 100%;
+                                                                                                      height: 45px;
+                                                                                                      background: 0 0;
+                                                                                                      padding: 0 5px;
+                                                                                                      outline: none;
+                                                                                                      border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+                        <!-- EMAIL -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="email" placeholder="Email" id="email" style="font-family: Poppins;
+                                                                                                  font-size: 15px;
+                                                                                                  color: #555;
+                                                                                                  line-height: 1.2;
+                                                                                                  display: block;
+                                                                                                  width: 100%;
+                                                                                                  height: 45px;
+                                                                                                  background: 0 0;
+                                                                                                  padding: 0 5px;
+                                                                                                  outline: none;
+                                                                                                  border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+                        <!-- PASSWORD -->
+                        <div data-validate="Enter password" style="width: 100%;
+                                                                   position: relative;
+                                                                   border-bottom: 2px solid #adadad;
+                                                                   margin-bottom: 37px;
+                                                                   position: relative;">
+                            <span style="font-size: 15px;
+                                         color: #999;
+                                         display: -webkit-box;
+                                         display: -webkit-flex;
+                                         display: -moz-box;
+                                         display: -ms-flexbox;
+                                         display: flex;
+                                         align-items: center;
+                                         position: absolute;
+                                         height: 100%;
+                                         top: 0;
+                                         right: 0;
+                                         padding-right: 5px;
+                                         cursor: pointer;
+                                         -webkit-transition: all .4s;
+                                         -o-transition: all .4s;
+                                         -moz-transition: all .4s;
+                                         transition: all .4s;">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <input type="password" name="password" placeholder="Password" id="password" style="font-family: Poppins;
+                                                                                                               font-size: 15px;
+                                                                                                               color: #555;
+                                                                                                               line-height: 1.2;
+                                                                                                               display: block;
+                                                                                                               width: 100%;
+                                                                                                               height: 47px;
+                                                                                                               background: 0 0;
+                                                                                                               padding: 0 5px;
+                                                                                                               outline: none;
+                                                                                                               border: none;">
+                            <span data-placeholder="Password" style="position: absolute;
+                                                                     display: block;
+                                                                     width: 100%;
+                                                                     height: 100%;
+                                                                     top: 0;
+                                                                     left: 0;
+                                                                     pointer-events: none;"></span>
+                        </div>
+                        <!-- PASSWORD CONFIRM -->
+                        <div data-validate="Enter password" style="width: 100%;
+                                                                   position: relative;
+                                                                   border-bottom: 2px solid #adadad;
+                                                                   margin-bottom: 37px;
+                                                                   position: relative;">
+                            <span style="font-size: 15px;
+                                         color: #999;
+                                         display: -webkit-box;
+                                         display: -webkit-flex;
+                                         display: -moz-box;
+                                         display: -ms-flexbox;
+                                         display: flex;
+                                         align-items: center;
+                                         position: absolute;
+                                         height: 100%;
+                                         top: 0;
+                                         right: 0;
+                                         padding-right: 5px;
+                                         cursor: pointer;
+                                         -webkit-transition: all .4s;
+                                         -o-transition: all .4s;
+                                         -moz-transition: all .4s;
+                                         transition: all .4s;">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <input type="password" name="confirm" placeholder="Confirm" id="confirm" style="font-family: Poppins;
+                                                                                                            font-size: 15px;
+                                                                                                            color: #555;
+                                                                                                            line-height: 1.2;
+                                                                                                            display: block;
+                                                                                                            width: 100%;
+                                                                                                            height: 47px;
+                                                                                                            background: 0 0;
+                                                                                                            padding: 0 5px;
+                                                                                                            outline: none;
+                                                                                                            border: none;">
+                            <span data-placeholder="Password" style="position: absolute;
+                                                                     display: block;
+                                                                     width: 100%;
+                                                                     height: 100%;
+                                                                     top: 0;
+                                                                     left: 0;
+                                                                     pointer-events: none;"></span>
+                        </div>
+                        <!-- NAME -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="name" placeholder="Name" id="name" style="font-family: Poppins;
+                                                                                               font-size: 15px;
+                                                                                               color: #555;
+                                                                                               line-height: 1.2;
+                                                                                               display: block;
+                                                                                               width: 100%;
+                                                                                               height: 45px;
+                                                                                               background: 0 0;
+                                                                                               padding: 0 5px;
+                                                                                               outline: none;
+                                                                                               border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+                        <!-- BIRTHDAY -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="birthday" placeholder="Birthday (1977/11/03)" id="birthday" style="font-family: Poppins;
+                                                                                                                        font-size: 15px;
+                                                                                                                        color: #555;
+                                                                                                                        line-height: 1.2;
+                                                                                                                        display: block;
+                                                                                                                        width: 100%;
+                                                                                                                        height: 45px;
+                                                                                                                        background: 0 0;
+                                                                                                                        padding: 0 5px;
+                                                                                                                        outline: none;
+                                                                                                                        border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+                        <!-- GENDER -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="gender" placeholder="Gender (m or f)" id="gender" style="font-family: Poppins;
+                                                                                                              font-size: 15px;
+                                                                                                              color: #555;
+                                                                                                              line-height: 1.2;
+                                                                                                              display: block;
+                                                                                                              width: 100%;
+                                                                                                              height: 45px;
+                                                                                                              background: 0 0;
+                                                                                                              padding: 0 5px;
+                                                                                                              outline: none;
+                                                                                                              border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+                        <!-- PROFILE -->
+                        <div data-validate = "Valid email is: a@b.c" style="width: 100%;
+                                                                            position: relative;
+                                                                            border-bottom: 2px solid #adadad;
+                                                                            margin-bottom: 37px;
+                                                                            position: relative;">
+                            <input type="text" name="profile" placeholder="Profile (https://...)" id="profile" style="font-family: Poppins;
+                                                                                                                      font-size: 15px;
+                                                                                                                      color: #555;
+                                                                                                                      line-height: 1.2;
+                                                                                                                      display: block;
+                                                                                                                      width: 100%;
+                                                                                                                      height: 45px;
+                                                                                                                      background: 0 0;
+                                                                                                                      padding: 0 5px;
+                                                                                                                      outline: none;
+                                                                                                                      border: none;">
+                            <span data-placeholder="Email" style="position: absolute;
+                                                                  display: block;
+                                                                  width: 100%;
+                                                                  height: 100%;
+                                                                  top: 0;
+                                                                  left: 0;
+                                                                  pointer-events: none;"></span>
+                        </div>
+
+                        <div style="display: -webkit-box;
+                                    display: -webkit-flex;
+                                    display: -moz-box;
+                                    display: -ms-flexbox;
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                    padding-top: 13px;">
+                            <div style="width: 100%;
+                                        display: block;
+                                        position: relative;
+                                        z-index: 1;
+                                        border-radius: 25px;
+                                        overflow: hidden;
+                                        margin: 0 auto;">
+                                <div style="position: absolute;
+                                            z-index: -1;
+                                            width: 300%;
+                                            height: 100%;
+                                            background: #a64bf4;
+                                            background: -webkit-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff);
+                                            background: -o-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff);
+                                            background: -moz-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff);
+                                            background: linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff);
+                                            top: 0;
+                                            left: -100%;
+                                            -webkit-transition: all .4s;
+                                            -o-transition: all .4s;
+                                            -moz-transition: all .4s;
+                                            transition: all .4s;"></div>
+                                <button type="button" style="font-family: Poppins;
+                                                             font-size: 15px;
+                                                             color: #fff;
+                                                             line-height: 1.2;
+                                                             text-transform: uppercase;
+                                                             display: -webkit-box;
+                                                             display: -webkit-flex;
+                                                             display: -moz-box;
+                                                             display: -ms-flexbox;
+                                                             display: flex;
+                                                             justify-content: center;
+                                                             align-items: center;
+                                                             padding: 0 20px;
+                                                             width: 100%;
+                                                             height: 50px;
+                                                             outline: none!important;
+                                                             border: none;
+                                                             background: 0 0;"
+                                        onClick="signup(event);">
+                                    Signup
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding-top: 32px; padding-bottom: 37px;">
+                            <!-- TODO: http://localhost:8090/example/signin/bootstrap.signin.html -->
+                            <div style="display: flex; margin: 0 auto; align-items: center; justify-content: center;">
+                                <div id="g_id_onload"
+                                     data-client_id="179878263198-dhoisb021j0d6at45v3cin42v7ms6uik.apps.googleusercontent.com"
+                                     data-context="signin"
+                                     data-ux_mode="popup"
+                                     data-callback="onGoogleLogin"
+                                     data-auto_select="true"
+                                     data-itp_support="true">
+                                </div>
+                                <div class="g_id_signin"
+                                     data-type="icon"
+                                     data-shape="square"
+                                     data-theme="outline"
+                                     data-text="signin_with"
+                                     data-size="large">
+                            </div>
+                        </div>
+                        <div class="text-center" style="padding-top: 24px;">
+                            <span style="font-family: Poppins;
+                                         font-size: 13px;
+                                         color: #666;
+                                         line-height: 1.5;">
+                                SIGN UP WITH
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
