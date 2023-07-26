@@ -83,5 +83,7 @@ function onEnterLogin() {
 ...
 ```
     * Android signup activity [ok]
+    * 클라이언트 라이브러리,... 라이브러리를 스크립트를 제공하자. 웹팩으로 빌드하자.
 
+CDN을 이용해서 무료로 자바스크립트 라이브러리를 제공하는 방법
     
