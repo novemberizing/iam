@@ -1,5 +1,5 @@
 ### 0.0.11
-    * Support docker
+    * Support docker [ok]
 
 ### FUTURE
     * configure.json 에서 비밀번호화 패스워드 삭제하고 환경변수를 적용할 수 있는 방법을 찾자.
@@ -22,14 +22,12 @@
     * 로그를 잘 작성할 것
     * 도커를 서버에서 실행하는 방법 [OK]
     * 도커 허브에서 사용하지 않는 태그를 삭제하는 방법
-    * 개발 방법론 ...
+    * 개발 방법론 정의
     * /docs/example/signin/bootstrap.signin.html 에서 로그인에 성공하면 성공하였음을 보여주는 방법을 구축하자.
     * ANDROID LOGIN FORM LIB & APPLICATION 을 구축하자.
 
         GITHUB MAVEN 사용하기
-
         프로젝트 구성을 어떻게 해야 하나?
-        GITHUB MAVEN 사용하기
 
 https://developer.android.com/studio/projects/android-library?hl=ko
 https://github.com/novemberizing/iam-android-default-lib
@@ -38,8 +36,6 @@ https://developer.android.com/build/publish-library
 https://developer.android.com/build/publish-library
 https://drcarter.tistory.com/189
 https://drcarter.tistory.com/189
-패키지 시스템과 프런트 소스를 어떻게 ...
-iam-android-default
 https://vegeta2102.medium.com/how-to-publish-android-library-to-github-package-as-a-maven-repository-4709de7608ab
 https://bacassf.tistory.com/159#:~:text=github%EC%9D%98%20%EB%B0%B0%ED%8F%AC%ED%95%A0%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC,Publish%20Release%EB%A5%BC%20%EB%88%8C%EB%9F%AC%EC%A4%8D%EB%8B%88%EB%8B%A4.
 https://velog.io/@thevlakk/Android-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%B6%9C%EC%8B%9C-%EB%B2%95-feat.WTBarChart-%EB%82%98%EC%9D%98-%EC%B2%AB-%EB%B2%88%EC%A7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC
@@ -48,40 +44,13 @@ https://kotlinworld.com/424
     * Cross-Origin-Opener-Policy policy would block the window.postMessage call. 로그 더 이상 보지 않기
     * Docker biuld [OK]
     * README 꾸미기
-    * Bootstrap signup page [ok]
-
-docs/example/signup/bootstrap.signup.html
-
+    * Bootstrap signup page [ok] https://github.com/novemberizing/iam/issues/16
     * docs/example/signin/bootstrap.signin.html 에서 placeholder 적용 [ok]
     * ANDROID SIGNUP PAGE
     * 개발 서버를 설정하는 방법
     * 개발 서버에서 안드로이드를 테스트하는 방법
-    * Bug / 개발환경에서 도커를 빌드하지 않으면 소스가 반영되지 않는다. [ok]
-
-개발환경에서 도커를 빌드하지 않으면 소스가 반영되지 않는다. 그렇기 때문에 개발환경에서 도커를 실행시킬 때는 /usr/src/app 을 마운트 시켜서 실행시키자.
-
-```
-docker run -itd --name iam -p 40001:40001 -p 50001:50001 -v ${PWD}:/usr/src/app novemberizing/iam
-```
-
-    * Enhancement / "docs/example/signin/bootstrap.signin.html" 페이지에서 엔터키를 치면 로그인되도록 하자. [ok]
-
-```js
-...
-function onEnterLogin() {
-    var keyCode = window.event.keyCode;
-    if(keyCode === 13) {
-        signin();
-    }
-}
-...
-```
-
-```html
-...
-<body onkeydown="onEnterLogin();">
-...
-```
+    * Bug / 개발환경에서 도커를 빌드하지 않으면 소스가 반영되지 않는다. [ok] https://github.com/novemberizing/iam/issues/17
+    * Enhancement / "docs/example/signin/bootstrap.signin.html" 페이지에서 엔터키를 치면 로그인되도록 하자. [ok] https://github.com/novemberizing/iam/issues/18
     * Android signup activity [ok]
     * 클라이언트 라이브러리,... 라이브러리를 스크립트를 제공하자. 웹팩으로 빌드하자.
 
