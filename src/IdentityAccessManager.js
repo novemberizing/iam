@@ -58,7 +58,6 @@ export default class IdentityAccessManager extends ApplicationServerService {
 
         if(server.express) {
             server.express.get(`${this.path}/user/check`, async (req, res) => {
-                /** 파라미터가 없는 것이 마음에 들지 않는다. */
                 await IdentityAccessManager.call(async () => res.send(await this.check(IdentityAccessManager.#authorization({}, 'http', req))),
                                                        e  => res.status(500).send(IdentityAccessManager.#error(e)));
             });

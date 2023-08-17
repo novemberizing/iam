@@ -5,7 +5,7 @@ import { ApplicationServerServiceModule } from "@novemberizing/app";
 const access = {
     secret: "identity.access.manager.tokenizer.access",
     options: {
-        expiresIn: "10m"
+        expiresIn: "1d"
     }
 };
 
