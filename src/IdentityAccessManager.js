@@ -39,6 +39,31 @@ export default class IdentityAccessManager extends ApplicationServerService {
         throw new IdentityAccessExceptionUnsupported();
     }
 
+    static #account(json) {
+        console.log(json);
+        if(json.identity && json.password) {
+            /** TODO: SUPPORT ONE TIME PASSWORD */
+            return {
+                account: {
+                    identity: json.identity,
+                    password: json.password
+                }
+            }
+        }
+        if(json.google) {
+            return {
+                google: json.google
+            }
+        }
+        if(json.access) {
+            return {
+                access: json.access
+            }
+        }
+
+        throw new IdentityAccessExceptionUnsupported();
+    }
+
     static #error(e) {
         console.log(e);
         return {
@@ -57,19 +82,30 @@ export default class IdentityAccessManager extends ApplicationServerService {
         if(!this.modules.get("/token")) this.reg(new IdentityAccessTokenizer(this, {}));
 
         if(server.express) {
+            server.express.use(async (req, res, next) => {
+                const token = IdentityAccessManager.#authorization({}, 'http', req);
+                try {
+                    const result = await this.check(token);
+                    req.user = result ? result.user : null;
+                } catch(e) {
+                    /** TODO: BUSINESS LOGIC */
+                }
+                
+                next();
+            });
+
             server.express.get(`${this.path}/user/check`, async (req, res) => {
                 await IdentityAccessManager.call(async () => res.send(await this.check(IdentityAccessManager.#authorization({}, 'http', req))),
                                                        e  => res.status(500).send(IdentityAccessManager.#error(e)));
             });
 
             server.express.get(`${this.path}/signin`, async (req, res) => {
-                const o = {
-                    account: {
-                        identity: req.query.identity,
-                        password: req.query.password
-                    }
-                };
-                await IdentityAccessManager.call(async () => res.send(await this.signin(IdentityAccessManager.#authorization(o, 'http', req))),
+                await IdentityAccessManager.call(async () => res.send(await this.signin(IdentityAccessManager.#account(req.query))),
+                                                       e  => res.status(500).send(IdentityAccessManager.#error(e)));
+            });
+
+            server.express.post(`${this.path}/signin`, async (req, res) => {
+                await IdentityAccessManager.call(async () => res.send(await this.signin(IdentityAccessManager.#account(req.body))),
                                                        e  => res.status(500).send(IdentityAccessManager.#error(e)));
             });
 
