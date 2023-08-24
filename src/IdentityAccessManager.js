@@ -86,6 +86,7 @@ export default class IdentityAccessManager extends ApplicationServerService {
                 const token = IdentityAccessManager.#authorization({}, 'http', req);
                 try {
                     const result = await this.check(token);
+                    console.log(result);
                     req.user = result ? result.user : null;
                 } catch(e) {
                     /** TODO: BUSINESS LOGIC */
