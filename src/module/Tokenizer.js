@@ -25,6 +25,9 @@ const refresh = {
 const extension = {
     gen: {
         sql: "CALL PROCEDURE_TOKEN_GEN(?, ?, ?, ?)"
+    },
+    get: {
+        sql: "CALL PROCEDURE_TOKEN_GET(?)"
     }
 };
 
@@ -62,13 +65,17 @@ export default class IdentityAccessTokenizer extends ApplicationServerServiceMod
 
         const token = await this.sign({email, timestamp}, this.config.secret);
 
-        await this.#storage.query("gen", no, token, ip, extension);
+        await this.#storage.query("gen", no, token, ip, JSON.stringify(extension));
 
         return token;
     }
 
     async check(token) {
-        return await this.verify(token, this.config.secret);
+        await this.verify(token, this.config.secret);
+
+        const data = await this.#storage.query("get", token);
+
+        return { user: JSON.parse(data.extension), token };
     }
 
     async off() {

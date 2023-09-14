@@ -33,7 +33,8 @@ export default class IdentityAccessManager extends ApplicationServerService {
         }
 
         /** 현재는 지원하지 않는다. HTTP 말고 SOCKET 등도 구현할 예정이다. */
-        throw new IdentityAccessExceptionUnsupported();
+        // throw new IdentityAccessExceptionUnsupported();
+        return null;
     }
 
     /** 어디에 위치하는 것이 좋을까? */
@@ -48,7 +49,8 @@ export default class IdentityAccessManager extends ApplicationServerService {
         }
 
         /** 현재는 지원하지 않는다. HTTP 말고 SOCKET 등도 구현할 예정이다. */
-        throw new IdentityAccessExceptionUnsupported();
+        // throw new IdentityAccessExceptionUnsupported();
+        return null;
     }
 
     static #account(json) {
@@ -73,7 +75,9 @@ export default class IdentityAccessManager extends ApplicationServerService {
             }
         }
 
-        throw new IdentityAccessExceptionUnsupported();
+        return null;
+
+        // throw new IdentityAccessExceptionUnsupported();
     }
 
     static #error(e) {
@@ -95,11 +99,11 @@ export default class IdentityAccessManager extends ApplicationServerService {
 
         if(server.express) {
             server.express.use(async (req, res, next) => {
-                const token = IdentityAccessManager.#authorization({}, 'http', req);
                 try {
+                    const token = IdentityAccessManager.#authorization({}, 'http', req);
                     const result = await this.check(token);
                     console.log(result);
-                    req.user = result ? result.user : null;
+                    req.user = result;
                 } catch(e) {
                     /** TODO: BUSINESS LOGIC */
                 }
