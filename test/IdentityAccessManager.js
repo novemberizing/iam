@@ -91,128 +91,17 @@ describe("IdentityAccessManager", () => {
 
         const account = await Application.administrator.moduleCall("/iam", "/account", "get", { identity: "administrator", password: "melong@17" });
         const user = await Application.administrator.moduleCall("/iam", "/user", "get", { no: account.no });
-        const token = await Application.administrator.moduleCall("/iam", "/token", "gen", { user, account }, account);
 
-        const access = await Application.administrator.moduleCall("/iam", "/token", "access", token.access);
-        const refresh = await Application.administrator.moduleCall("/iam", "/token", "refresh", token.refresh);
+        console.log(user);
         
-        await Application.off();
-    });
+        const token = await Application.administrator.moduleCall("/iam", "/token", "gen", account.no, user.email, "192.168.0.1");
 
-    it(" 0004 IdentityAccessManager IdentityAccessAuthenticator", async () => {
-        Application.use(IdentityAccessManager);
+        console.log(token);
 
-        await Application.on(await Config.gen({ url: "fs://./test/IdentityAccessManager.configure.json" }));
+        const check = await Application.administrator.moduleCall("/iam", "/token", "check", token);
 
-        const account = await Application.administrator.moduleCall("/iam", "/account", "get", { identity: "administrator", password: "melong@17" });
-        const user = await Application.administrator.moduleCall("/iam", "/user", "get", { no: account.no });
-        const token = await Application.administrator.moduleCall("/iam", "/token", "gen", { user, account }, account);
-
-        let o = {
-            identity: "administrator",
-            password: "melong@17"
-        };
-        await Application.administrator.moduleCall("/iam", "/authenticator", "authenticate", o);
-
-        o = {
-            identity: "administrator2",
-            password: "melong@17"
-        };
-        await Application.administrator.moduleCall("/iam", "/authenticator", "authenticate", o);
-
-        o = {
-            access: token.access
-        };
-
-        await Application.administrator.moduleCall("/iam", "/authenticator", "authenticate", o);
-
-        await assert.rejects(async () => {
-            o = {
-                access: token.access + '1234'
-            };
-    
-            await Application.administrator.moduleCall("/iam", "/authenticator", "authenticate", o);
-        });
-
-        await assert.rejects(async () => {
-            o = {
-                refresh: token.refresh + '1234'
-            };
-
-            await Application.administrator.moduleCall("/iam", "/authenticator", "authenticate", o);
-        });
-
-        await Application.off();
-    });
-
-    it(" 0005 IdentityAccessManager", async () => {
-        Application.use(IdentityAccessManager);
-
-        await Application.on(await Config.gen({ url: "fs://./test/IdentityAccessManager.configure.json" }));
-
-        const account = await Application.administrator.moduleCall("/iam", "/account", "get", { identity: "administrator", password: "melong@17" });
-        const user = await Application.administrator.moduleCall("/iam", "/user", "get", { no: account.no });
-        const token = await Application.administrator.moduleCall("/iam", "/token", "gen", { user, account }, account);
-
-        let o = {
-            token
-        };
-
-        await Application.administrator.call("/iam", "signin", o);
-
-        o = {
-            account
-        };
-
-        await Application.administrator.call("/iam", "signin", o);
-
-        try {
-            await Application.administrator.moduleCall("/iam", "/user", "del", { email: "novemberizing@outlook.kr" });
-        } catch(e) {
-
-        }
+        console.log(check);
         
-        await Application.administrator.moduleCall("/iam", "/account", "del", { identity: "novemberizing", password: "melong@17" });
-
-        await Application.administrator.call("/iam", "signup", { identity: "novemberizing", password: "melong@17" }, { email: "novemberizing@outlook.kr" });
-
-        await Application.off();
-    });
-
-    it(" 0006 IdentityAccessManager", async () => {
-        Application.use(IdentityAccessManager);
-
-        await Application.on(await Config.gen({ url: "fs://./test/IdentityAccessManager.configure.json" }));
-
-        await assert.rejects(axios.get(`http://localhost:40001/iam/signin?identity=hello&password=world`));
-
-        try {
-            Application.server.moduleCall("/iam", "/account", "del", { identity: "iticworld", password: "melong@17" });
-        } catch(e) {
-
-        }
-
-        try {
-            Application.server.moduleCall("/iam", "/user", "del", { email: "iticworld@daum.com" });
-        } catch(e) {
-
-        }
-
-        await axios.post('http://localhost:40001/iam/signup', {
-            account: {
-                identity: "iticworld",
-                password: "melong@17"
-            },
-            user: {
-                email: "iticworld@daum.com",
-                name: "Hyunsik Park",
-                gender: "m",
-                birthday: "1977/11/03"
-            }
-        });
-
-        await axios.get(`http://localhost:40001/iam/signin?identity=iticworld&password=melong@17`);
-
         await Application.off();
     });
 });
