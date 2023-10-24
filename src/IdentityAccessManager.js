@@ -1,4 +1,6 @@
 import Application from "@novemberizing/app";
+import Log from "@novemberizing/log";
+
 import _ from "lodash";
 
 import { ApplicationServerService } from "@novemberizing/app";
@@ -109,6 +111,7 @@ export default class IdentityAccessManager extends ApplicationServerService {
                     req.user = result ? result.user : null;
                     Log.d(IdentityAccessManager.#tag, req.user);
                 } catch(e) {
+                    console.log(e);
                     /** TODO: BUSINESS LOGIC */
                 }
                 

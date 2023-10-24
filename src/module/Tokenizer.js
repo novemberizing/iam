@@ -4,6 +4,8 @@ import Storage from "@novemberizing/storage";
 
 import { ApplicationServerServiceModule } from "@novemberizing/app";
 
+import Log from "@novemberizing/log";
+
 import IdentityAccessExceptionUninitialized from "../exception/Uninitialized.js";
 
 const secret = "identity.access.manager.tokenizer";
@@ -32,6 +34,8 @@ const extension = {
 };
 
 export default class IdentityAccessTokenizer extends ApplicationServerServiceModule {
+    static #tag = "IdentityAccessTokenizer";
+
     #storage = null;
 
     constructor(service, config) {
@@ -74,6 +78,8 @@ export default class IdentityAccessTokenizer extends ApplicationServerServiceMod
         await this.verify(token, this.config.secret);
 
         const data = await this.#storage.query("get", token);
+
+        Log.d(IdentityAccessTokenizer.#tag, data);
 
         return { user: JSON.parse(data.extension), token };
     }
