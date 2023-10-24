@@ -12,6 +12,8 @@ import IdentityAccessUser from "./module/User.js";
 import IdentityAccessExceptionUnsupported from "./exception/Unsupported.js";
 
 export default class IdentityAccessManager extends ApplicationServerService {
+    static #tag = "IdentityAccessManager";
+
     static {
         Application.use(IdentityAccessAccount);
         Application.use(IdentityAccessAuthenticator);
@@ -98,12 +100,14 @@ export default class IdentityAccessManager extends ApplicationServerService {
         if(!this.modules.get("/token")) this.reg(new IdentityAccessTokenizer(this, {}));
 
         if(server.express) {
+            // 미들웨어로 로그인 한 사용자에 대한 사용자 키를 얻어 낸다.
             server.express.use(async (req, res, next) => {
                 try {
                     const token = IdentityAccessManager.#authorization({}, 'http', req);
                     const result = await this.check(token);
                     console.log(result);
                     req.user = result ? result.user : null;
+                    Log.d(IdentityAccessManager.#tag, req.user);
                 } catch(e) {
                     /** TODO: BUSINESS LOGIC */
                 }
